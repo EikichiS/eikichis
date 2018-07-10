@@ -1,0 +1,90 @@
+﻿@model IEnumerable<DALC.EVALUACION>
+
+@{
+    ViewBag.Title = "Listar";
+    Layout = "~/Views/Shared/_LayoutSupervisor.cshtml";
+}
+
+<h2>Administrar Evaluaciones</h2>
+
+<table class="table">
+    <tr>
+        <th>
+           NOMBRE
+        </th>
+        <th>
+            TECNICO A CARGO
+        </th>
+        <th>
+            EMPRESA
+        </th>
+        <th>
+            ENCARGADO
+        </th>
+        <th>
+            DESCRIPCIÓN
+        </th>
+        <th>
+            OBSERVACIÓN
+        </th>
+        <th>
+            FECHA DE CREACIÓN
+        </th>
+        <th>
+            TIPO DE EVALUA
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_EV)
+        </td>
+        <td>
+            @{ 
+                if (item.ID_TECNICO== 1)
+                {
+                    <span>Roberto Andres</span>
+                } else
+                {
+                    <span>Luis Muñoz</span>
+                }
+            }
+        </td>
+        <td>
+            @{
+           if (item.ID_EMPRESA== 1)
+           {
+            <span>SAFE</span>
+           }
+           else
+          { 
+           <span>CODELCO</span>
+          }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ENCARGADO_EV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_EV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OBSERVACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_CRECION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_EVALUACION.TIP_EVALUACION)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.ID_EVALUACION }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.ID_EVALUACION })
+        </td>
+    </tr>
+}
+
+</table>

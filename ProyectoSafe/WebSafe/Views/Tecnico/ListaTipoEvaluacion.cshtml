@@ -1,0 +1,8 @@
+﻿@model IEnumerable<DALC.TIPO_EVALUACION>
+
+<select class="form-control" id="ID_TIPOEV" name="ID_TIPOEV">
+    @foreach (var item in Model)
+    {
+        <option value="@item.ID_TIPOEV">@item.TIP_EVALUACION</option>
+    }
+</select>

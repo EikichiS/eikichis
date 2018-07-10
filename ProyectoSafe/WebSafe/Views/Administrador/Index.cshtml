@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h4>Administración</h4>
+    <div class="col s6 col offset-s3">
+        <div class="row ">
+            <div class="col s6 col offset-s3" style="align-items:center; justify-content: center;">
+                @Html.ActionLink("Mantenedor de Empresas", "MantenedorEmpresas", null, new { @class = "waves-effect waves-light btn-large" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6 col offset-s3">
+                @Html.ActionLink("Mantenedor de Evaluaciones", "MantenedorEvaluacion", null, new { @class = "waves-effect waves-light btn-large" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6 col offset-s3">
+                @Html.ActionLink("Mantenedor de Usuarios", "MantenedorUsuarios", null, new { @class = "waves-effect waves-light btn-large" })
+            </div>
+        </div>
+    </div>
+</div>
+
+

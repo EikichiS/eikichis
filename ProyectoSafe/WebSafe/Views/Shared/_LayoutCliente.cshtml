@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Safe - Cliente</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background-color:honeydew">
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div><center><img src="~/imagenes/Logo.png" width="20" height="20" /></center></div>
+            </div>
+            <div class="navbar-collapse navbar-static-top">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @{
+                            if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("Logout", "Inicio", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesión</a>
+                                }
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Iniciar Sesión", "Login", "Account")
+                            }
+                        }
+                    </li>
+                    <li>@Html.ActionLink("Evaluaciones a Terreno", "EvaTerreno", "Cliente")</li>
+                    <li>@Html.ActionLink("Capacitaciones", "Capacitaciones", "Cliente")</li>
+                    <li>@Html.ActionLink("Visitas Medicas", "VisitasMed", "Cliente")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+        
+    </ul>
+
+    <div class="container-fluid body-content" style="background-color:honeydew">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year- Safe- Sistema de Gestión de Riesgos</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

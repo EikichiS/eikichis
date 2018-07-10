@@ -1,0 +1,75 @@
+﻿@model DALC.EMPRESA
+
+@{
+    ViewBag.Title = "DetallesEmpresa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Detalles Empresa </h2>
+
+<div>
+    <h4>EMPRESA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RAZON_SOCIAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RAZON_SOCIAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RUT_EMPRESA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RUT_EMPRESA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REPRESENTANTE_LEGAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REPRESENTANTE_LEGAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIRECCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PAGINA_WEB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAGINA_WEB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_EMPRESA })|
+    @Html.ActionLink("Back to List", "MantenedorEmpresas")
+</p>

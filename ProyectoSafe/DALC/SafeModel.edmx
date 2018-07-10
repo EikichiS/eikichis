@@ -1,0 +1,1496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SafeModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CAPACITACION">
+          <Key>
+            <PropertyRef Name="ID_CAPACITACION" />
+          </Key>
+          <Property Name="ID_CAPACITACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="FECHA_INICIO" Type="varchar2" MaxLength="20" />
+          <Property Name="FECHA_FIN" Type="varchar2" MaxLength="20" />
+          <Property Name="ID_TIPOCAP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_RELATOR" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DETALLE_CAPACITACION">
+          <Key>
+            <PropertyRef Name="ID_DETALLECAP" />
+          </Key>
+          <Property Name="ID_DETALLECAP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="FECHA_CLASE" Type="varchar2" MaxLength="50" />
+          <Property Name="HORA_CLASE" Type="varchar2" MaxLength="50" />
+          <Property Name="DURACION_HORAS" Type="varchar2" MaxLength="50" />
+          <Property Name="ID_CAPACITACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DIAGNOSTICO">
+          <Key>
+            <PropertyRef Name="ID_DIAGNOSTICO" />
+          </Key>
+          <Property Name="ID_DIAGNOSTICO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="200" />
+          <Property Name="EXAMEN" Type="char" MaxLength="1" />
+          <Property Name="ID_FICHA" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_VISITA" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="EMPRESA">
+          <Key>
+            <PropertyRef Name="ID_EMPRESA" />
+          </Key>
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="100" />
+          <Property Name="RUT_EMPRESA" Type="varchar2" MaxLength="20" />
+          <Property Name="REPRESENTANTE_LEGAL" Type="varchar2" MaxLength="100" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="100" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="100" />
+          <Property Name="PAGINA_WEB" Type="varchar2" MaxLength="100" />
+          <Property Name="ID_TIPOEMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EVALUACION">
+          <Key>
+            <PropertyRef Name="ID_EVALUACION" />
+          </Key>
+          <Property Name="ID_EVALUACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_TIPOEV" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_EV" Type="varchar2" MaxLength="100" />
+          <Property Name="ID_TECNICO" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" />
+          <Property Name="ENCARGADO_EV" Type="varchar2" MaxLength="100" />
+          <Property Name="DESC_EV" Type="varchar2" MaxLength="200" />
+          <Property Name="OBSERVACION" Type="varchar2" MaxLength="500" />
+          <Property Name="FECHA_CRECION" Type="date" />
+        </EntityType>
+        <EntityType Name="FICHA_MEDICA">
+          <Key>
+            <PropertyRef Name="ID_FICHA" />
+          </Key>
+          <Property Name="ID_FICHA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="500" />
+          <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="INSTALACION">
+          <Key>
+            <PropertyRef Name="ID_INSTALACION" />
+          </Key>
+          <Property Name="ID_INSTALACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SECTOR" Type="varchar2" MaxLength="50" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="50" />
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEDICO">
+          <Key>
+            <PropertyRef Name="ID_MEDICO" />
+          </Key>
+          <Property Name="ID_MEDICO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_COMPLETO" Type="varchar2" MaxLength="200" />
+          <Property Name="ESPECIALIDAD" Type="varchar2" MaxLength="100" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="VALIDADO" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="RELATOR">
+          <Key>
+            <PropertyRef Name="ID_RELATOR" />
+          </Key>
+          <Property Name="ID_RELATOR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_RELATOR" Type="varchar2" MaxLength="50" />
+          <Property Name="APELLIDO_RELATOR" Type="varchar2" MaxLength="50" />
+          <Property Name="RUT_RELATOR" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TIPO_CAPACITACION">
+          <Key>
+            <PropertyRef Name="ID_TIPOCAP" />
+          </Key>
+          <Property Name="ID_TIPOCAP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TEMA" Type="varchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TIPO_EMPRESA">
+          <Key>
+            <PropertyRef Name="ID_TIPOEMPRESA" />
+          </Key>
+          <Property Name="ID_TIPOEMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUBRO" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TIPO_EVALUACION">
+          <Key>
+            <PropertyRef Name="ID_TIPOEV" />
+          </Key>
+          <Property Name="ID_TIPOEV" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIP_EVALUACION" Type="varchar2" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TIPO_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_TIPOUS" />
+          </Key>
+          <Property Name="ID_TIPOUS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROL" Type="varchar2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TRABAJADOR">
+          <Key>
+            <PropertyRef Name="ID_TRABAJADOR" />
+          </Key>
+          <Property Name="ID_TRABAJADOR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_COMPLETO" Type="varchar2" MaxLength="500" />
+          <Property Name="RUT_TRABAJADOR" Type="varchar2" MaxLength="100" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="100" />
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_VISITA" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_CAPACITACION" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="100" />
+          <Property Name="PASS" Type="varchar2" MaxLength="100" />
+          <Property Name="RUT_USUARIO" Type="varchar2" MaxLength="50" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" />
+          <Property Name="APELLIDO_PATERNO" Type="varchar2" MaxLength="100" />
+          <Property Name="APELLIDO_MATERNO" Type="varchar2" MaxLength="100" />
+          <Property Name="FECHA_NACIMIENTO" Type="varchar2" MaxLength="100" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="100" />
+          <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="ID_TIPOUS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO_CAPACITACION">
+          <Key>
+            <PropertyRef Name="ID_USUCAP" />
+          </Key>
+          <Property Name="ID_USUCAP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CAPACITACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO_EVALUACION">
+          <Key>
+            <PropertyRef Name="ID_USUEV" />
+          </Key>
+          <Property Name="ID_USUEV" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EVALUACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO_VISITA">
+          <Key>
+            <PropertyRef Name="ID_USUVIS" />
+          </Key>
+          <Property Name="ID_USUVIS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_VISITA" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="VISITA_MEDICA">
+          <Key>
+            <PropertyRef Name="ID_VISITA" />
+          </Key>
+          <Property Name="ID_VISITA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="FECHA_VISITA" Type="varchar2" MaxLength="50" />
+          <Property Name="PACIENTE" Type="varchar2" MaxLength="50" />
+          <Property Name="HORA_VISITA" Type="varchar2" MaxLength="10" />
+          <Property Name="CONFIRMA" Type="char" MaxLength="1" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="200" />
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_MEDICO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DBSAFE.VISTA_EMPRESAS' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="VISTA_EMPRESAS">
+          <Property Name="EMPRESA" Type="varchar2" MaxLength="100" />
+          <Property Name="REPRESENTANTE_LEGAL" Type="varchar2" MaxLength="100" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="100" />
+          <Property Name="PAGINA_WEB" Type="varchar2" MaxLength="100" />
+          <Property Name="RUBRO" Type="varchar2" MaxLength="50" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DBSAFE.VISTA_EVALUACIONES' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="VISTA_EVALUACIONES">
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" />
+          <Property Name="TECNICO_ENCARGADO" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" />
+          <Property Name="ENCARGADO_EMPRESA" Type="varchar2" MaxLength="100" />
+          <Property Name="TIPO_EVALUACION" Type="varchar2" MaxLength="200" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DBSAFE.VISTA_USUARIOS' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="VISTA_USUARIOS">
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="201" />
+          <Property Name="RUT" Type="varchar2" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="100" />
+          <Property Name="EMPRESA" Type="varchar2" MaxLength="100" />
+          <Property Name="ROL" Type="varchar2" MaxLength="100" />
+        </EntityType>-->
+        <Association Name="SYS_C008119">
+          <End Role="TIPO_EMPRESA" Type="Self.TIPO_EMPRESA" Multiplicity="1" />
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_EMPRESA">
+              <PropertyRef Name="ID_TIPOEMPRESA" />
+            </Principal>
+            <Dependent Role="EMPRESA">
+              <PropertyRef Name="ID_TIPOEMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008122">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="INSTALACION" Type="Self.INSTALACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="INSTALACION">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008127">
+          <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_USUARIO">
+              <PropertyRef Name="ID_TIPOUS" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_TIPOUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008128">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008132">
+          <End Role="TIPO_EVALUACION" Type="Self.TIPO_EVALUACION" Multiplicity="1" />
+          <End Role="EVALUACION" Type="Self.EVALUACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_EVALUACION">
+              <PropertyRef Name="ID_TIPOEV" />
+            </Principal>
+            <Dependent Role="EVALUACION">
+              <PropertyRef Name="ID_TIPOEV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008133">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="0..1" />
+          <End Role="EVALUACION" Type="Self.EVALUACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="EVALUACION">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008137">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="USUARIO_EVALUACION" Type="Self.USUARIO_EVALUACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO_EVALUACION">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008138">
+          <End Role="EVALUACION" Type="Self.EVALUACION" Multiplicity="1" />
+          <End Role="USUARIO_EVALUACION" Type="Self.USUARIO_EVALUACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVALUACION">
+              <PropertyRef Name="ID_EVALUACION" />
+            </Principal>
+            <Dependent Role="USUARIO_EVALUACION">
+              <PropertyRef Name="ID_EVALUACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008144">
+          <End Role="TIPO_CAPACITACION" Type="Self.TIPO_CAPACITACION" Multiplicity="1" />
+          <End Role="CAPACITACION" Type="Self.CAPACITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CAPACITACION">
+              <PropertyRef Name="ID_TIPOCAP" />
+            </Principal>
+            <Dependent Role="CAPACITACION">
+              <PropertyRef Name="ID_TIPOCAP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008145">
+          <End Role="RELATOR" Type="Self.RELATOR" Multiplicity="1" />
+          <End Role="CAPACITACION" Type="Self.CAPACITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RELATOR">
+              <PropertyRef Name="ID_RELATOR" />
+            </Principal>
+            <Dependent Role="CAPACITACION">
+              <PropertyRef Name="ID_RELATOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008148">
+          <End Role="CAPACITACION" Type="Self.CAPACITACION" Multiplicity="1" />
+          <End Role="DETALLE_CAPACITACION" Type="Self.DETALLE_CAPACITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAPACITACION">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Principal>
+            <Dependent Role="DETALLE_CAPACITACION">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008152">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="USUARIO_CAPACITACION" Type="Self.USUARIO_CAPACITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO_CAPACITACION">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008153">
+          <End Role="CAPACITACION" Type="Self.CAPACITACION" Multiplicity="1" />
+          <End Role="USUARIO_CAPACITACION" Type="Self.USUARIO_CAPACITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAPACITACION">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Principal>
+            <Dependent Role="USUARIO_CAPACITACION">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008158">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="VISITA_MEDICA" Type="Self.VISITA_MEDICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="VISITA_MEDICA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008159">
+          <End Role="MEDICO" Type="Self.MEDICO" Multiplicity="1" />
+          <End Role="VISITA_MEDICA" Type="Self.VISITA_MEDICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDICO">
+              <PropertyRef Name="ID_MEDICO" />
+            </Principal>
+            <Dependent Role="VISITA_MEDICA">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008161">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="USUARIO_VISITA" Type="Self.USUARIO_VISITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO_VISITA">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008162">
+          <End Role="VISITA_MEDICA" Type="Self.VISITA_MEDICA" Multiplicity="0..1" />
+          <End Role="USUARIO_VISITA" Type="Self.USUARIO_VISITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VISITA_MEDICA">
+              <PropertyRef Name="ID_VISITA" />
+            </Principal>
+            <Dependent Role="USUARIO_VISITA">
+              <PropertyRef Name="ID_VISITA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008164">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="FICHA_MEDICA" Type="Self.FICHA_MEDICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="FICHA_MEDICA">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008166">
+          <End Role="FICHA_MEDICA" Type="Self.FICHA_MEDICA" Multiplicity="0..1" />
+          <End Role="DIAGNOSTICO" Type="Self.DIAGNOSTICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FICHA_MEDICA">
+              <PropertyRef Name="ID_FICHA" />
+            </Principal>
+            <Dependent Role="DIAGNOSTICO">
+              <PropertyRef Name="ID_FICHA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008167">
+          <End Role="VISITA_MEDICA" Type="Self.VISITA_MEDICA" Multiplicity="0..1" />
+          <End Role="DIAGNOSTICO" Type="Self.DIAGNOSTICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VISITA_MEDICA">
+              <PropertyRef Name="ID_VISITA" />
+            </Principal>
+            <Dependent Role="DIAGNOSTICO">
+              <PropertyRef Name="ID_VISITA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008186">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="0..1" />
+          <End Role="TRABAJADOR" Type="Self.TRABAJADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="TRABAJADOR">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008187">
+          <End Role="VISITA_MEDICA" Type="Self.VISITA_MEDICA" Multiplicity="0..1" />
+          <End Role="TRABAJADOR" Type="Self.TRABAJADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VISITA_MEDICA">
+              <PropertyRef Name="ID_VISITA" />
+            </Principal>
+            <Dependent Role="TRABAJADOR">
+              <PropertyRef Name="ID_VISITA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008188">
+          <End Role="CAPACITACION" Type="Self.CAPACITACION" Multiplicity="0..1" />
+          <End Role="TRABAJADOR" Type="Self.TRABAJADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAPACITACION">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Principal>
+            <Dependent Role="TRABAJADOR">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SafeModelStoreContainer">
+          <EntitySet Name="CAPACITACION" EntityType="Self.CAPACITACION" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="DETALLE_CAPACITACION" EntityType="Self.DETALLE_CAPACITACION" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="DIAGNOSTICO" EntityType="Self.DIAGNOSTICO" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="EVALUACION" EntityType="Self.EVALUACION" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="FICHA_MEDICA" EntityType="Self.FICHA_MEDICA" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="INSTALACION" EntityType="Self.INSTALACION" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="MEDICO" EntityType="Self.MEDICO" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="RELATOR" EntityType="Self.RELATOR" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="TIPO_CAPACITACION" EntityType="Self.TIPO_CAPACITACION" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="TIPO_EMPRESA" EntityType="Self.TIPO_EMPRESA" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="TIPO_EVALUACION" EntityType="Self.TIPO_EVALUACION" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="TRABAJADOR" EntityType="Self.TRABAJADOR" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="USUARIO_CAPACITACION" EntityType="Self.USUARIO_CAPACITACION" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="USUARIO_EVALUACION" EntityType="Self.USUARIO_EVALUACION" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="USUARIO_VISITA" EntityType="Self.USUARIO_VISITA" Schema="DBSAFE" store:Type="Tables" />
+          <EntitySet Name="VISITA_MEDICA" EntityType="Self.VISITA_MEDICA" Schema="DBSAFE" store:Type="Tables" />
+          <AssociationSet Name="SYS_C008119" Association="Self.SYS_C008119">
+            <End Role="TIPO_EMPRESA" EntitySet="TIPO_EMPRESA" />
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008122" Association="Self.SYS_C008122">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="INSTALACION" EntitySet="INSTALACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008127" Association="Self.SYS_C008127">
+            <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008128" Association="Self.SYS_C008128">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008132" Association="Self.SYS_C008132">
+            <End Role="TIPO_EVALUACION" EntitySet="TIPO_EVALUACION" />
+            <End Role="EVALUACION" EntitySet="EVALUACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008133" Association="Self.SYS_C008133">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="EVALUACION" EntitySet="EVALUACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008137" Association="Self.SYS_C008137">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO_EVALUACION" EntitySet="USUARIO_EVALUACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008138" Association="Self.SYS_C008138">
+            <End Role="EVALUACION" EntitySet="EVALUACION" />
+            <End Role="USUARIO_EVALUACION" EntitySet="USUARIO_EVALUACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008144" Association="Self.SYS_C008144">
+            <End Role="TIPO_CAPACITACION" EntitySet="TIPO_CAPACITACION" />
+            <End Role="CAPACITACION" EntitySet="CAPACITACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008145" Association="Self.SYS_C008145">
+            <End Role="RELATOR" EntitySet="RELATOR" />
+            <End Role="CAPACITACION" EntitySet="CAPACITACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008148" Association="Self.SYS_C008148">
+            <End Role="CAPACITACION" EntitySet="CAPACITACION" />
+            <End Role="DETALLE_CAPACITACION" EntitySet="DETALLE_CAPACITACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008152" Association="Self.SYS_C008152">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO_CAPACITACION" EntitySet="USUARIO_CAPACITACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008153" Association="Self.SYS_C008153">
+            <End Role="CAPACITACION" EntitySet="CAPACITACION" />
+            <End Role="USUARIO_CAPACITACION" EntitySet="USUARIO_CAPACITACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008158" Association="Self.SYS_C008158">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="VISITA_MEDICA" EntitySet="VISITA_MEDICA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008159" Association="Self.SYS_C008159">
+            <End Role="MEDICO" EntitySet="MEDICO" />
+            <End Role="VISITA_MEDICA" EntitySet="VISITA_MEDICA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008161" Association="Self.SYS_C008161">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO_VISITA" EntitySet="USUARIO_VISITA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008162" Association="Self.SYS_C008162">
+            <End Role="VISITA_MEDICA" EntitySet="VISITA_MEDICA" />
+            <End Role="USUARIO_VISITA" EntitySet="USUARIO_VISITA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008164" Association="Self.SYS_C008164">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="FICHA_MEDICA" EntitySet="FICHA_MEDICA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008166" Association="Self.SYS_C008166">
+            <End Role="FICHA_MEDICA" EntitySet="FICHA_MEDICA" />
+            <End Role="DIAGNOSTICO" EntitySet="DIAGNOSTICO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008167" Association="Self.SYS_C008167">
+            <End Role="VISITA_MEDICA" EntitySet="VISITA_MEDICA" />
+            <End Role="DIAGNOSTICO" EntitySet="DIAGNOSTICO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008186" Association="Self.SYS_C008186">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="TRABAJADOR" EntitySet="TRABAJADOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008187" Association="Self.SYS_C008187">
+            <End Role="VISITA_MEDICA" EntitySet="VISITA_MEDICA" />
+            <End Role="TRABAJADOR" EntitySet="TRABAJADOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008188" Association="Self.SYS_C008188">
+            <End Role="CAPACITACION" EntitySet="CAPACITACION" />
+            <End Role="TRABAJADOR" EntitySet="TRABAJADOR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CAPACITACION">
+          <Key>
+            <PropertyRef Name="ID_CAPACITACION" />
+          </Key>
+          <Property Name="ID_CAPACITACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" />
+          <Property Name="FECHA_INICIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_FIN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TIPOCAP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_RELATOR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TIPO_CAPACITACION" Relationship="Self.SYS_C008144" FromRole="CAPACITACION" ToRole="TIPO_CAPACITACION" />
+          <NavigationProperty Name="RELATOR" Relationship="Self.SYS_C008145" FromRole="CAPACITACION" ToRole="RELATOR" />
+          <NavigationProperty Name="DETALLE_CAPACITACION" Relationship="Self.SYS_C008148" FromRole="CAPACITACION" ToRole="DETALLE_CAPACITACION" />
+          <NavigationProperty Name="USUARIO_CAPACITACION" Relationship="Self.SYS_C008153" FromRole="CAPACITACION" ToRole="USUARIO_CAPACITACION" />
+          <NavigationProperty Name="TRABAJADOR" Relationship="Self.SYS_C008188" FromRole="CAPACITACION" ToRole="TRABAJADOR" />
+        </EntityType>
+        <EntityType Name="DETALLE_CAPACITACION">
+          <Key>
+            <PropertyRef Name="ID_DETALLECAP" />
+          </Key>
+          <Property Name="ID_DETALLECAP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" />
+          <Property Name="FECHA_CLASE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HORA_CLASE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DURACION_HORAS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_CAPACITACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CAPACITACION" Relationship="Self.SYS_C008148" FromRole="DETALLE_CAPACITACION" ToRole="CAPACITACION" />
+        </EntityType>
+        <EntityType Name="DIAGNOSTICO">
+          <Key>
+            <PropertyRef Name="ID_DIAGNOSTICO" />
+          </Key>
+          <Property Name="ID_DIAGNOSTICO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EXAMEN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ID_FICHA" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_VISITA" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="FICHA_MEDICA" Relationship="Self.SYS_C008166" FromRole="DIAGNOSTICO" ToRole="FICHA_MEDICA" />
+          <NavigationProperty Name="VISITA_MEDICA" Relationship="Self.SYS_C008167" FromRole="DIAGNOSTICO" ToRole="VISITA_MEDICA" />
+        </EntityType>
+        <EntityType Name="EMPRESA">
+          <Key>
+            <PropertyRef Name="ID_EMPRESA" />
+          </Key>
+          <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RUT_EMPRESA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="REPRESENTANTE_LEGAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAGINA_WEB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TIPOEMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TIPO_EMPRESA" Relationship="Self.SYS_C008119" FromRole="EMPRESA" ToRole="TIPO_EMPRESA" />
+          <NavigationProperty Name="INSTALACION" Relationship="Self.SYS_C008122" FromRole="EMPRESA" ToRole="INSTALACION" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.SYS_C008128" FromRole="EMPRESA" ToRole="USUARIO" />
+          <NavigationProperty Name="EVALUACION" Relationship="Self.SYS_C008133" FromRole="EMPRESA" ToRole="EVALUACION" />
+          <NavigationProperty Name="VISITA_MEDICA" Relationship="Self.SYS_C008158" FromRole="EMPRESA" ToRole="VISITA_MEDICA" />
+          <NavigationProperty Name="TRABAJADOR" Relationship="Self.SYS_C008186" FromRole="EMPRESA" ToRole="TRABAJADOR" />
+        </EntityType>
+        <EntityType Name="EVALUACION">
+          <Key>
+            <PropertyRef Name="ID_EVALUACION" />
+          </Key>
+          <Property Name="ID_EVALUACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_TIPOEV" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_EV" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TECNICO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ENCARGADO_EV" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESC_EV" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CRECION" Type="DateTime" />
+          <NavigationProperty Name="EMPRESA" Relationship="Self.SYS_C008133" FromRole="EVALUACION" ToRole="EMPRESA" />
+          <NavigationProperty Name="TIPO_EVALUACION" Relationship="Self.SYS_C008132" FromRole="EVALUACION" ToRole="TIPO_EVALUACION" />
+          <NavigationProperty Name="USUARIO_EVALUACION" Relationship="Self.SYS_C008138" FromRole="EVALUACION" ToRole="USUARIO_EVALUACION" />
+        </EntityType>
+        <EntityType Name="FICHA_MEDICA">
+          <Key>
+            <PropertyRef Name="ID_FICHA" />
+          </Key>
+          <Property Name="ID_FICHA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" />
+          <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="DIAGNOSTICO" Relationship="Self.SYS_C008166" FromRole="FICHA_MEDICA" ToRole="DIAGNOSTICO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.SYS_C008164" FromRole="FICHA_MEDICA" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="INSTALACION">
+          <Key>
+            <PropertyRef Name="ID_INSTALACION" />
+          </Key>
+          <Property Name="ID_INSTALACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="EMPRESA" Relationship="Self.SYS_C008122" FromRole="INSTALACION" ToRole="EMPRESA" />
+        </EntityType>
+        <EntityType Name="MEDICO">
+          <Key>
+            <PropertyRef Name="ID_MEDICO" />
+          </Key>
+          <Property Name="ID_MEDICO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_COMPLETO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ESPECIALIDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VALIDADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="VISITA_MEDICA" Relationship="Self.SYS_C008159" FromRole="MEDICO" ToRole="VISITA_MEDICA" />
+        </EntityType>
+        <EntityType Name="RELATOR">
+          <Key>
+            <PropertyRef Name="ID_RELATOR" />
+          </Key>
+          <Property Name="ID_RELATOR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_RELATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO_RELATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RUT_RELATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CAPACITACION" Relationship="Self.SYS_C008145" FromRole="RELATOR" ToRole="CAPACITACION" />
+        </EntityType>
+        <EntityType Name="TIPO_CAPACITACION">
+          <Key>
+            <PropertyRef Name="ID_TIPOCAP" />
+          </Key>
+          <Property Name="ID_TIPOCAP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TEMA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CAPACITACION" Relationship="Self.SYS_C008144" FromRole="TIPO_CAPACITACION" ToRole="CAPACITACION" />
+        </EntityType>
+        <EntityType Name="TIPO_EMPRESA">
+          <Key>
+            <PropertyRef Name="ID_TIPOEMPRESA" />
+          </Key>
+          <Property Name="ID_TIPOEMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUBRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPRESA" Relationship="Self.SYS_C008119" FromRole="TIPO_EMPRESA" ToRole="EMPRESA" />
+        </EntityType>
+        <EntityType Name="TIPO_EVALUACION">
+          <Key>
+            <PropertyRef Name="ID_TIPOEV" />
+          </Key>
+          <Property Name="ID_TIPOEV" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIP_EVALUACION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EVALUACION" Relationship="Self.SYS_C008132" FromRole="TIPO_EVALUACION" ToRole="EVALUACION" />
+        </EntityType>
+        <EntityType Name="TIPO_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_TIPOUS" />
+          </Key>
+          <Property Name="ID_TIPOUS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.SYS_C008127" FromRole="TIPO_USUARIO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="TRABAJADOR">
+          <Key>
+            <PropertyRef Name="ID_TRABAJADOR" />
+          </Key>
+          <Property Name="ID_TRABAJADOR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_COMPLETO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RUT_TRABAJADOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_VISITA" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_CAPACITACION" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="CAPACITACION" Relationship="Self.SYS_C008188" FromRole="TRABAJADOR" ToRole="CAPACITACION" />
+          <NavigationProperty Name="EMPRESA" Relationship="Self.SYS_C008186" FromRole="TRABAJADOR" ToRole="EMPRESA" />
+          <NavigationProperty Name="VISITA_MEDICA" Relationship="Self.SYS_C008187" FromRole="TRABAJADOR" ToRole="VISITA_MEDICA" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PASS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RUT_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO_PATERNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO_MATERNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_NACIMIENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" />
+          <Property Name="ID_TIPOUS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="EMPRESA" Relationship="Self.SYS_C008128" FromRole="USUARIO" ToRole="EMPRESA" />
+          <NavigationProperty Name="FICHA_MEDICA" Relationship="Self.SYS_C008164" FromRole="USUARIO" ToRole="FICHA_MEDICA" />
+          <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.SYS_C008127" FromRole="USUARIO" ToRole="TIPO_USUARIO" />
+          <NavigationProperty Name="USUARIO_EVALUACION" Relationship="Self.SYS_C008137" FromRole="USUARIO" ToRole="USUARIO_EVALUACION" />
+          <NavigationProperty Name="USUARIO_CAPACITACION" Relationship="Self.SYS_C008152" FromRole="USUARIO" ToRole="USUARIO_CAPACITACION" />
+          <NavigationProperty Name="USUARIO_VISITA" Relationship="Self.SYS_C008161" FromRole="USUARIO" ToRole="USUARIO_VISITA" />
+        </EntityType>
+        <EntityType Name="USUARIO_CAPACITACION">
+          <Key>
+            <PropertyRef Name="ID_USUCAP" />
+          </Key>
+          <Property Name="ID_USUCAP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CAPACITACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CAPACITACION" Relationship="Self.SYS_C008153" FromRole="USUARIO_CAPACITACION" ToRole="CAPACITACION" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.SYS_C008152" FromRole="USUARIO_CAPACITACION" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="USUARIO_EVALUACION">
+          <Key>
+            <PropertyRef Name="ID_USUEV" />
+          </Key>
+          <Property Name="ID_USUEV" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EVALUACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="EVALUACION" Relationship="Self.SYS_C008138" FromRole="USUARIO_EVALUACION" ToRole="EVALUACION" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.SYS_C008137" FromRole="USUARIO_EVALUACION" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="USUARIO_VISITA">
+          <Key>
+            <PropertyRef Name="ID_USUVIS" />
+          </Key>
+          <Property Name="ID_USUVIS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_VISITA" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.SYS_C008161" FromRole="USUARIO_VISITA" ToRole="USUARIO" />
+          <NavigationProperty Name="VISITA_MEDICA" Relationship="Self.SYS_C008162" FromRole="USUARIO_VISITA" ToRole="VISITA_MEDICA" />
+        </EntityType>
+        <EntityType Name="VISITA_MEDICA">
+          <Key>
+            <PropertyRef Name="ID_VISITA" />
+          </Key>
+          <Property Name="ID_VISITA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" />
+          <Property Name="FECHA_VISITA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PACIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HORA_VISITA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CONFIRMA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_MEDICO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="DIAGNOSTICO" Relationship="Self.SYS_C008167" FromRole="VISITA_MEDICA" ToRole="DIAGNOSTICO" />
+          <NavigationProperty Name="EMPRESA" Relationship="Self.SYS_C008158" FromRole="VISITA_MEDICA" ToRole="EMPRESA" />
+          <NavigationProperty Name="MEDICO" Relationship="Self.SYS_C008159" FromRole="VISITA_MEDICA" ToRole="MEDICO" />
+          <NavigationProperty Name="TRABAJADOR" Relationship="Self.SYS_C008187" FromRole="VISITA_MEDICA" ToRole="TRABAJADOR" />
+          <NavigationProperty Name="USUARIO_VISITA" Relationship="Self.SYS_C008162" FromRole="VISITA_MEDICA" ToRole="USUARIO_VISITA" />
+        </EntityType>
+        <Association Name="SYS_C008144">
+          <End Role="TIPO_CAPACITACION" Type="Self.TIPO_CAPACITACION" Multiplicity="1" />
+          <End Role="CAPACITACION" Type="Self.CAPACITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CAPACITACION">
+              <PropertyRef Name="ID_TIPOCAP" />
+            </Principal>
+            <Dependent Role="CAPACITACION">
+              <PropertyRef Name="ID_TIPOCAP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008145">
+          <End Role="RELATOR" Type="Self.RELATOR" Multiplicity="1" />
+          <End Role="CAPACITACION" Type="Self.CAPACITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RELATOR">
+              <PropertyRef Name="ID_RELATOR" />
+            </Principal>
+            <Dependent Role="CAPACITACION">
+              <PropertyRef Name="ID_RELATOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008148">
+          <End Role="CAPACITACION" Type="Self.CAPACITACION" Multiplicity="1" />
+          <End Role="DETALLE_CAPACITACION" Type="Self.DETALLE_CAPACITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAPACITACION">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Principal>
+            <Dependent Role="DETALLE_CAPACITACION">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008153">
+          <End Role="CAPACITACION" Type="Self.CAPACITACION" Multiplicity="1" />
+          <End Role="USUARIO_CAPACITACION" Type="Self.USUARIO_CAPACITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAPACITACION">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Principal>
+            <Dependent Role="USUARIO_CAPACITACION">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008188">
+          <End Role="CAPACITACION" Type="Self.CAPACITACION" Multiplicity="0..1" />
+          <End Role="TRABAJADOR" Type="Self.TRABAJADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAPACITACION">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Principal>
+            <Dependent Role="TRABAJADOR">
+              <PropertyRef Name="ID_CAPACITACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008166">
+          <End Role="FICHA_MEDICA" Type="Self.FICHA_MEDICA" Multiplicity="0..1" />
+          <End Role="DIAGNOSTICO" Type="Self.DIAGNOSTICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FICHA_MEDICA">
+              <PropertyRef Name="ID_FICHA" />
+            </Principal>
+            <Dependent Role="DIAGNOSTICO">
+              <PropertyRef Name="ID_FICHA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008167">
+          <End Role="VISITA_MEDICA" Type="Self.VISITA_MEDICA" Multiplicity="0..1" />
+          <End Role="DIAGNOSTICO" Type="Self.DIAGNOSTICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VISITA_MEDICA">
+              <PropertyRef Name="ID_VISITA" />
+            </Principal>
+            <Dependent Role="DIAGNOSTICO">
+              <PropertyRef Name="ID_VISITA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008119">
+          <End Role="TIPO_EMPRESA" Type="Self.TIPO_EMPRESA" Multiplicity="1" />
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_EMPRESA">
+              <PropertyRef Name="ID_TIPOEMPRESA" />
+            </Principal>
+            <Dependent Role="EMPRESA">
+              <PropertyRef Name="ID_TIPOEMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008122">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="INSTALACION" Type="Self.INSTALACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="INSTALACION">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008128">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008133">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="0..1" />
+          <End Role="EVALUACION" Type="Self.EVALUACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="EVALUACION">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008158">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="VISITA_MEDICA" Type="Self.VISITA_MEDICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="VISITA_MEDICA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008186">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="0..1" />
+          <End Role="TRABAJADOR" Type="Self.TRABAJADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="TRABAJADOR">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008132">
+          <End Role="TIPO_EVALUACION" Type="Self.TIPO_EVALUACION" Multiplicity="1" />
+          <End Role="EVALUACION" Type="Self.EVALUACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_EVALUACION">
+              <PropertyRef Name="ID_TIPOEV" />
+            </Principal>
+            <Dependent Role="EVALUACION">
+              <PropertyRef Name="ID_TIPOEV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008138">
+          <End Role="EVALUACION" Type="Self.EVALUACION" Multiplicity="1" />
+          <End Role="USUARIO_EVALUACION" Type="Self.USUARIO_EVALUACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVALUACION">
+              <PropertyRef Name="ID_EVALUACION" />
+            </Principal>
+            <Dependent Role="USUARIO_EVALUACION">
+              <PropertyRef Name="ID_EVALUACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008164">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="FICHA_MEDICA" Type="Self.FICHA_MEDICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="FICHA_MEDICA">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008159">
+          <End Role="MEDICO" Type="Self.MEDICO" Multiplicity="1" />
+          <End Role="VISITA_MEDICA" Type="Self.VISITA_MEDICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDICO">
+              <PropertyRef Name="ID_MEDICO" />
+            </Principal>
+            <Dependent Role="VISITA_MEDICA">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008127">
+          <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_USUARIO">
+              <PropertyRef Name="ID_TIPOUS" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_TIPOUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008187">
+          <End Role="VISITA_MEDICA" Type="Self.VISITA_MEDICA" Multiplicity="0..1" />
+          <End Role="TRABAJADOR" Type="Self.TRABAJADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VISITA_MEDICA">
+              <PropertyRef Name="ID_VISITA" />
+            </Principal>
+            <Dependent Role="TRABAJADOR">
+              <PropertyRef Name="ID_VISITA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008137">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="USUARIO_EVALUACION" Type="Self.USUARIO_EVALUACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO_EVALUACION">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008152">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="USUARIO_CAPACITACION" Type="Self.USUARIO_CAPACITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO_CAPACITACION">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008161">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="USUARIO_VISITA" Type="Self.USUARIO_VISITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO_VISITA">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C008162">
+          <End Role="VISITA_MEDICA" Type="Self.VISITA_MEDICA" Multiplicity="0..1" />
+          <End Role="USUARIO_VISITA" Type="Self.USUARIO_VISITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VISITA_MEDICA">
+              <PropertyRef Name="ID_VISITA" />
+            </Principal>
+            <Dependent Role="USUARIO_VISITA">
+              <PropertyRef Name="ID_VISITA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SafeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAPACITACION" EntityType="Self.CAPACITACION" />
+          <EntitySet Name="DETALLE_CAPACITACION" EntityType="Self.DETALLE_CAPACITACION" />
+          <EntitySet Name="DIAGNOSTICO" EntityType="Self.DIAGNOSTICO" />
+          <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" />
+          <EntitySet Name="EVALUACION" EntityType="Self.EVALUACION" />
+          <EntitySet Name="FICHA_MEDICA" EntityType="Self.FICHA_MEDICA" />
+          <EntitySet Name="INSTALACION" EntityType="Self.INSTALACION" />
+          <EntitySet Name="MEDICO" EntityType="Self.MEDICO" />
+          <EntitySet Name="RELATOR" EntityType="Self.RELATOR" />
+          <EntitySet Name="TIPO_CAPACITACION" EntityType="Self.TIPO_CAPACITACION" />
+          <EntitySet Name="TIPO_EMPRESA" EntityType="Self.TIPO_EMPRESA" />
+          <EntitySet Name="TIPO_EVALUACION" EntityType="Self.TIPO_EVALUACION" />
+          <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" />
+          <EntitySet Name="TRABAJADOR" EntityType="Self.TRABAJADOR" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <EntitySet Name="USUARIO_CAPACITACION" EntityType="Self.USUARIO_CAPACITACION" />
+          <EntitySet Name="USUARIO_EVALUACION" EntityType="Self.USUARIO_EVALUACION" />
+          <EntitySet Name="USUARIO_VISITA" EntityType="Self.USUARIO_VISITA" />
+          <EntitySet Name="VISITA_MEDICA" EntityType="Self.VISITA_MEDICA" />
+          <AssociationSet Name="SYS_C008144" Association="Self.SYS_C008144">
+            <End Role="TIPO_CAPACITACION" EntitySet="TIPO_CAPACITACION" />
+            <End Role="CAPACITACION" EntitySet="CAPACITACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008145" Association="Self.SYS_C008145">
+            <End Role="RELATOR" EntitySet="RELATOR" />
+            <End Role="CAPACITACION" EntitySet="CAPACITACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008148" Association="Self.SYS_C008148">
+            <End Role="CAPACITACION" EntitySet="CAPACITACION" />
+            <End Role="DETALLE_CAPACITACION" EntitySet="DETALLE_CAPACITACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008153" Association="Self.SYS_C008153">
+            <End Role="CAPACITACION" EntitySet="CAPACITACION" />
+            <End Role="USUARIO_CAPACITACION" EntitySet="USUARIO_CAPACITACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008188" Association="Self.SYS_C008188">
+            <End Role="CAPACITACION" EntitySet="CAPACITACION" />
+            <End Role="TRABAJADOR" EntitySet="TRABAJADOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008166" Association="Self.SYS_C008166">
+            <End Role="FICHA_MEDICA" EntitySet="FICHA_MEDICA" />
+            <End Role="DIAGNOSTICO" EntitySet="DIAGNOSTICO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008167" Association="Self.SYS_C008167">
+            <End Role="VISITA_MEDICA" EntitySet="VISITA_MEDICA" />
+            <End Role="DIAGNOSTICO" EntitySet="DIAGNOSTICO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008119" Association="Self.SYS_C008119">
+            <End Role="TIPO_EMPRESA" EntitySet="TIPO_EMPRESA" />
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008122" Association="Self.SYS_C008122">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="INSTALACION" EntitySet="INSTALACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008128" Association="Self.SYS_C008128">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008133" Association="Self.SYS_C008133">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="EVALUACION" EntitySet="EVALUACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008158" Association="Self.SYS_C008158">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="VISITA_MEDICA" EntitySet="VISITA_MEDICA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008186" Association="Self.SYS_C008186">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="TRABAJADOR" EntitySet="TRABAJADOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008132" Association="Self.SYS_C008132">
+            <End Role="TIPO_EVALUACION" EntitySet="TIPO_EVALUACION" />
+            <End Role="EVALUACION" EntitySet="EVALUACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008138" Association="Self.SYS_C008138">
+            <End Role="EVALUACION" EntitySet="EVALUACION" />
+            <End Role="USUARIO_EVALUACION" EntitySet="USUARIO_EVALUACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008164" Association="Self.SYS_C008164">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="FICHA_MEDICA" EntitySet="FICHA_MEDICA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008159" Association="Self.SYS_C008159">
+            <End Role="MEDICO" EntitySet="MEDICO" />
+            <End Role="VISITA_MEDICA" EntitySet="VISITA_MEDICA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008127" Association="Self.SYS_C008127">
+            <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008187" Association="Self.SYS_C008187">
+            <End Role="VISITA_MEDICA" EntitySet="VISITA_MEDICA" />
+            <End Role="TRABAJADOR" EntitySet="TRABAJADOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008137" Association="Self.SYS_C008137">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO_EVALUACION" EntitySet="USUARIO_EVALUACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008152" Association="Self.SYS_C008152">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO_CAPACITACION" EntitySet="USUARIO_CAPACITACION" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008161" Association="Self.SYS_C008161">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO_VISITA" EntitySet="USUARIO_VISITA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C008162" Association="Self.SYS_C008162">
+            <End Role="VISITA_MEDICA" EntitySet="VISITA_MEDICA" />
+            <End Role="USUARIO_VISITA" EntitySet="USUARIO_VISITA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SafeModelStoreContainer" CdmEntityContainer="SafeEntities">
+          <EntitySetMapping Name="CAPACITACION">
+            <EntityTypeMapping TypeName="SafeModel.CAPACITACION">
+              <MappingFragment StoreEntitySet="CAPACITACION">
+                <ScalarProperty Name="ID_CAPACITACION" ColumnName="ID_CAPACITACION" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+                <ScalarProperty Name="ID_TIPOCAP" ColumnName="ID_TIPOCAP" />
+                <ScalarProperty Name="ID_RELATOR" ColumnName="ID_RELATOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_CAPACITACION">
+            <EntityTypeMapping TypeName="SafeModel.DETALLE_CAPACITACION">
+              <MappingFragment StoreEntitySet="DETALLE_CAPACITACION">
+                <ScalarProperty Name="ID_DETALLECAP" ColumnName="ID_DETALLECAP" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="FECHA_CLASE" ColumnName="FECHA_CLASE" />
+                <ScalarProperty Name="HORA_CLASE" ColumnName="HORA_CLASE" />
+                <ScalarProperty Name="DURACION_HORAS" ColumnName="DURACION_HORAS" />
+                <ScalarProperty Name="ID_CAPACITACION" ColumnName="ID_CAPACITACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIAGNOSTICO">
+            <EntityTypeMapping TypeName="SafeModel.DIAGNOSTICO">
+              <MappingFragment StoreEntitySet="DIAGNOSTICO">
+                <ScalarProperty Name="ID_DIAGNOSTICO" ColumnName="ID_DIAGNOSTICO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="EXAMEN" ColumnName="EXAMEN" />
+                <ScalarProperty Name="ID_FICHA" ColumnName="ID_FICHA" />
+                <ScalarProperty Name="ID_VISITA" ColumnName="ID_VISITA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPRESA">
+            <EntityTypeMapping TypeName="SafeModel.EMPRESA">
+              <MappingFragment StoreEntitySet="EMPRESA">
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+                <ScalarProperty Name="RUT_EMPRESA" ColumnName="RUT_EMPRESA" />
+                <ScalarProperty Name="REPRESENTANTE_LEGAL" ColumnName="REPRESENTANTE_LEGAL" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="PAGINA_WEB" ColumnName="PAGINA_WEB" />
+                <ScalarProperty Name="ID_TIPOEMPRESA" ColumnName="ID_TIPOEMPRESA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVALUACION">
+            <EntityTypeMapping TypeName="SafeModel.EVALUACION">
+              <MappingFragment StoreEntitySet="EVALUACION">
+                <ScalarProperty Name="ID_EVALUACION" ColumnName="ID_EVALUACION" />
+                <ScalarProperty Name="ID_TIPOEV" ColumnName="ID_TIPOEV" />
+                <ScalarProperty Name="NOMBRE_EV" ColumnName="NOMBRE_EV" />
+                <ScalarProperty Name="ID_TECNICO" ColumnName="ID_TECNICO" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+                <ScalarProperty Name="ENCARGADO_EV" ColumnName="ENCARGADO_EV" />
+                <ScalarProperty Name="DESC_EV" ColumnName="DESC_EV" />
+                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+                <ScalarProperty Name="FECHA_CRECION" ColumnName="FECHA_CRECION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FICHA_MEDICA">
+            <EntityTypeMapping TypeName="SafeModel.FICHA_MEDICA">
+              <MappingFragment StoreEntitySet="FICHA_MEDICA">
+                <ScalarProperty Name="ID_FICHA" ColumnName="ID_FICHA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSTALACION">
+            <EntityTypeMapping TypeName="SafeModel.INSTALACION">
+              <MappingFragment StoreEntitySet="INSTALACION">
+                <ScalarProperty Name="ID_INSTALACION" ColumnName="ID_INSTALACION" />
+                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDICO">
+            <EntityTypeMapping TypeName="SafeModel.MEDICO">
+              <MappingFragment StoreEntitySet="MEDICO">
+                <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+                <ScalarProperty Name="NOMBRE_COMPLETO" ColumnName="NOMBRE_COMPLETO" />
+                <ScalarProperty Name="ESPECIALIDAD" ColumnName="ESPECIALIDAD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="VALIDADO" ColumnName="VALIDADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RELATOR">
+            <EntityTypeMapping TypeName="SafeModel.RELATOR">
+              <MappingFragment StoreEntitySet="RELATOR">
+                <ScalarProperty Name="ID_RELATOR" ColumnName="ID_RELATOR" />
+                <ScalarProperty Name="NOMBRE_RELATOR" ColumnName="NOMBRE_RELATOR" />
+                <ScalarProperty Name="APELLIDO_RELATOR" ColumnName="APELLIDO_RELATOR" />
+                <ScalarProperty Name="RUT_RELATOR" ColumnName="RUT_RELATOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_CAPACITACION">
+            <EntityTypeMapping TypeName="SafeModel.TIPO_CAPACITACION">
+              <MappingFragment StoreEntitySet="TIPO_CAPACITACION">
+                <ScalarProperty Name="ID_TIPOCAP" ColumnName="ID_TIPOCAP" />
+                <ScalarProperty Name="TEMA" ColumnName="TEMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_EMPRESA">
+            <EntityTypeMapping TypeName="SafeModel.TIPO_EMPRESA">
+              <MappingFragment StoreEntitySet="TIPO_EMPRESA">
+                <ScalarProperty Name="ID_TIPOEMPRESA" ColumnName="ID_TIPOEMPRESA" />
+                <ScalarProperty Name="RUBRO" ColumnName="RUBRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_EVALUACION">
+            <EntityTypeMapping TypeName="SafeModel.TIPO_EVALUACION">
+              <MappingFragment StoreEntitySet="TIPO_EVALUACION">
+                <ScalarProperty Name="ID_TIPOEV" ColumnName="ID_TIPOEV" />
+                <ScalarProperty Name="TIP_EVALUACION" ColumnName="TIP_EVALUACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_USUARIO">
+            <EntityTypeMapping TypeName="SafeModel.TIPO_USUARIO">
+              <MappingFragment StoreEntitySet="TIPO_USUARIO">
+                <ScalarProperty Name="ID_TIPOUS" ColumnName="ID_TIPOUS" />
+                <ScalarProperty Name="ROL" ColumnName="ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRABAJADOR">
+            <EntityTypeMapping TypeName="SafeModel.TRABAJADOR">
+              <MappingFragment StoreEntitySet="TRABAJADOR">
+                <ScalarProperty Name="ID_TRABAJADOR" ColumnName="ID_TRABAJADOR" />
+                <ScalarProperty Name="NOMBRE_COMPLETO" ColumnName="NOMBRE_COMPLETO" />
+                <ScalarProperty Name="RUT_TRABAJADOR" ColumnName="RUT_TRABAJADOR" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+                <ScalarProperty Name="ID_VISITA" ColumnName="ID_VISITA" />
+                <ScalarProperty Name="ID_CAPACITACION" ColumnName="ID_CAPACITACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="SafeModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
+                <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
+                <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="ID_TIPOUS" ColumnName="ID_TIPOUS" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO_CAPACITACION">
+            <EntityTypeMapping TypeName="SafeModel.USUARIO_CAPACITACION">
+              <MappingFragment StoreEntitySet="USUARIO_CAPACITACION">
+                <ScalarProperty Name="ID_USUCAP" ColumnName="ID_USUCAP" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_CAPACITACION" ColumnName="ID_CAPACITACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO_EVALUACION">
+            <EntityTypeMapping TypeName="SafeModel.USUARIO_EVALUACION">
+              <MappingFragment StoreEntitySet="USUARIO_EVALUACION">
+                <ScalarProperty Name="ID_USUEV" ColumnName="ID_USUEV" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_EVALUACION" ColumnName="ID_EVALUACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO_VISITA">
+            <EntityTypeMapping TypeName="SafeModel.USUARIO_VISITA">
+              <MappingFragment StoreEntitySet="USUARIO_VISITA">
+                <ScalarProperty Name="ID_USUVIS" ColumnName="ID_USUVIS" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_VISITA" ColumnName="ID_VISITA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VISITA_MEDICA">
+            <EntityTypeMapping TypeName="SafeModel.VISITA_MEDICA">
+              <MappingFragment StoreEntitySet="VISITA_MEDICA">
+                <ScalarProperty Name="ID_VISITA" ColumnName="ID_VISITA" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="FECHA_VISITA" ColumnName="FECHA_VISITA" />
+                <ScalarProperty Name="PACIENTE" ColumnName="PACIENTE" />
+                <ScalarProperty Name="HORA_VISITA" ColumnName="HORA_VISITA" />
+                <ScalarProperty Name="CONFIRMA" ColumnName="CONFIRMA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+                <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

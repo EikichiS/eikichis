@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTrabajador.cshtml";
+}
+
+<center><h2>Portal de trabajador</h2></center>
+
+<center><h1>Descarga de informes</h1></center>
+<h1></h1>
+
+
+<center><div><p><a class="btn btn-primary" role="button" @Html.ActionLink("Visitas médicas", "ReporteV", "ReporteV", new { target = "_blank" })</a></p></div></center>
+<center><div><p><a class="btn btn-primary" role="button" @Html.ActionLink("Capacitaciones", "ReporteCD", "ReporteCD", new { target = "_blank" })</a></p></div></center>
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DALC.MEDICO>
+
+@{
+    ViewBag.Title = "ListaMedicos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListaMedicos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_COMPLETO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESPECIALIDAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VALIDADO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_COMPLETO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESPECIALIDAD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VALIDADO)
+        </td>
+        <td>
+            @Html.ActionLink("Validar Medico", "ObtenerMedicos", new { id=item.ID_MEDICO }) |
+        </td>
+    </tr>
+
+
+}
+</table>
+<label> Medico Validado :</label> 

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<DALC.EVALUACION>
+
+@{
+    ViewBag.Title = "MantenedorEvaluacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Mantenedor Evaluacion </h2>
+
+<p>
+    @Html.ActionLink("Crear Evaluacion", "AgregarEvaluacion")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_EV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TECNICO_EV)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMPRESA_EV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ENCARGADO_EV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_EV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OBSERVACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_CRECION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_EVALUACION.TIP_EVALUACION)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_EV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TECNICO_EV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMPRESA_EV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ENCARGADO_EV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_EV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OBSERVACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_CRECION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_EVALUACION.TIP_EVALUACION)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_EVALUACION }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_EVALUACION }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_EVALUACION })
+        </td>
+    </tr>
+}
+
+</table>

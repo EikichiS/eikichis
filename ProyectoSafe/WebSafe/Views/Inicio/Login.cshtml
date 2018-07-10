@@ -1,0 +1,132 @@
+﻿
+@model WebSafe.Models.UsuarioModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<style>
+    body{
+        background-color: #E0F2F7;
+    }
+
+    .col m6 luna {
+        padding: 500px;
+    }
+
+    #imagenlog {
+        background-color: #E0F2F7;
+        align-items: center;
+        border: hidden;
+        width: 100%;
+        
+    }
+    .button {
+        background-color: #D8F781;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <div class="section row">
+            <div class="col m6" >
+                <div class="card">
+                    <div id="imagenlog">
+                        <center><img src="~/imagenes/LogoNombre.png" width="600" height="200"></center>
+                    </div>
+                </div>
+            </div>
+            <center>
+                <div class="col m6 luna">
+                    <h4>Iniciar Sesión</h4>
+                    <br />
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @Id = "Form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "nav-wrapper red-text" })
+                        <div class="row">
+                            <div class="input-field col m12">
+                                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "" })&nbsp;
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "validate" } })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="input-field col m12">
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "" })&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @class = "validate" } })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="switch">
+                                <label>
+                                    Recordar &nbsp;&nbsp;&nbsp;
+                                    <input data-val="true" data-val-required="El campo Recordarme? es obligatorio." id="RememberMe" name="RememberMe" type="checkbox" value="true">
+                                    <span class="lever"></span>
+                                </label>
+                            </div>
+                            <br />
+                            <input name="RememberMe" type="hidden" value="false">
+                        </div>
+                        <div>
+                            <button class="btn-primary" type="submit">Iniciar Sesión</button>
+                        </div>
+                    }
+                </div>
+            </center>
+        </div>
+        <h4>&nbsp;</h4>
+    </div>
+    <div class="footer">
+        <center><p>&copy; Safe 2018</p></center>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            $("#Form").validate({
+                errorClass: 'invalid',
+                validClass: "valid",
+                errorPlacement: function (error, element) {
+                    $(element)
+                        .closest("form")
+                        .find("label[for='" + element.attr("id") + "']")
+                        .attr('data-error', error.text());
+                },
+                rules: {
+                    "Username": {
+                        required: true
+                    },
+                    "Password": {
+                        required: true
+                    }
+                },
+                messages: {
+                    "Username": {
+                        required: "Campo Obligatorio"
+                    },
+                    "Password": {
+                        required: "Campo Obligatorio"
+                    }
+                },
+                submitHandler: function () {
+                    $('#Form').submit();
+                }
+            });
+        });
+
+
+    </script>
+</body>

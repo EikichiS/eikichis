@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DALC.CAPACITACION>
+
+@{
+    ViewBag.Title = "ListaCap";
+    Layout = "~/Views/Shared/_LayoutSupervisor.cshtml";
+}
+
+<h2>ListaCap</h2>
+
+<p>
+    @Html.ActionLink("Crear Capacitación", "CrearCapa")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            FECHA DE COMIENZO
+        </th>
+        <th>
+            FECHA DE FINALIZACIÓN
+        </th>
+        <th>
+            FECHA DE CREACIÓN
+        </th>
+        <th>
+            TEMA DE LA CAPACITACIÓN
+        </th>
+        <th>
+            RELATOR A CARGO
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_CREACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_INICIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_FIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_CAPACITACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RELATOR.NOMBRE_RELATOR)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_CAPACITACION }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_CAPACITACION }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_CAPACITACION })
+        </td>
+    </tr>
+}
+
+</table>

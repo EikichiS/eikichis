@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c288c1bf10dc4cb3a7eb657a250f2f67" Name="Diagram1">
+        <EntityTypeShape EntityType="SafeModel.CAPACITACION" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.DETALLE_CAPACITACION" Width="1.5" PointX="7.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.DIAGNOSTICO" Width="1.5" PointX="12.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.EMPRESA" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.EVALUACION" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.FICHA_MEDICA" Width="1.5" PointX="10.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.INSTALACION" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.MEDICO" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.RELATOR" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.TIPO_CAPACITACION" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.TIPO_EMPRESA" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.TIPO_EVALUACION" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.TIPO_USUARIO" Width="1.5" PointX="6" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.TRABAJADOR" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.USUARIO" Width="1.5" PointX="8.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.USUARIO_CAPACITACION" Width="1.5" PointX="10.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.USUARIO_EVALUACION" Width="1.5" PointX="10.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.USUARIO_VISITA" Width="1.5" PointX="13.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafeModel.VISITA_MEDICA" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="SafeModel.SYS_C008144" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008145" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008148" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008153" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008188" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008166" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008167" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008119" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008122" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008128" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008133" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008158" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008186" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008132" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008138" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008164" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008159" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008127" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008187" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008137" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008152" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008161" ManuallyRouted="false" />
+        <AssociationConnector Association="SafeModel.SYS_C008162" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

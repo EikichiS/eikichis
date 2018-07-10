@@ -1,0 +1,83 @@
+﻿@model DALC.EVALUACION
+
+@{
+    ViewBag.Title = "DetallesEvaluacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetallesEvaluacion</h2>
+
+<div>
+    <h4>EVALUACION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE_EV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_EV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TECNICO_EV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TECNICO_EV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMPRESA_EV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMPRESA_EV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ENCARGADO_EV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ENCARGADO_EV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_EV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_EV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OBSERVACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OBSERVACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_CRECION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_CRECION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_EVALUACION.TIP_EVALUACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_EVALUACION.TIP_EVALUACION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_EVALUACION }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,135 @@
+﻿@model IEnumerable<DALC.VISITA_MEDICA>
+
+@{
+    ViewBag.Title = "VisitasMed";
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+}
+
+<h2>Lista de Visitas Medicas</h2>
+
+
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_VISITA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONFIRMA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMPRESA)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @{ foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_VISITA)
+                </td>
+                <td>
+                    @if (item.CONFIRMA == "A")
+                    {
+                        <a>Aprobada</a>
+                    }
+                    else
+                    {
+                        <a>Pendiente</a>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMPRESA)
+                </td>
+
+            </tr>
+
+        }
+
+    }
+
+
+</table>
+@{
+    
+    int dias = 1;
+    string mes = System.DateTime.Today.ToString().Substring(3, 2);
+    <table border="1" align="center" width="100%">
+        <tr>
+            <td colspan="7" align="center"><a><b>CALENDARIO DE VISITAS DEL MES @mes</b></a></td>
+        </tr>
+        @for (int i = 1; i <= 5; i++)
+        {
+            <tr>
+
+                @for (int x = 1; x <= 7; x++)
+                {
+
+                    int variable = dias++;
+                    string datodia;
+
+
+                    <td height="200" width="14%">
+                        @if (variable <= 9)
+                        {
+                            datodia = "0" + variable.ToString();
+                            <a><b>@datodia</b></a>
+                        }
+                        else
+                        {
+                            datodia = variable.ToString();
+                            <a><b>@datodia</b></a>
+                        }
+                        <br />
+                        @foreach (var item in Model)
+                        {
+
+                            if ((datodia == item.FECHA_VISITA.Substring(0, 2) & mes == item.FECHA_VISITA.Substring(3, 2)))
+                            {
+                                @Html.DisplayFor(modelItem => item.FECHA_VISITA)
+                                <br />
+
+                                if (item.CONFIRMA == "A")
+                                {
+                                    <a>Aprobada</a>
+                                }
+                                else
+                                {
+                                    <a>Pendiente</a>
+                                }
+                                <br />
+                                @Html.DisplayFor(modelItem => item.DESCRIPCION)
+                                <br />
+                                @Html.DisplayFor(modelItem => item.EMPRESA)
+                                <br />
+                            }
+                        }
+
+                        @if (variable >= 30)
+                        {
+                            break;
+                        }
+                    </td>
+
+
+                }
+
+            </tr>
+        }
+
+
+    </table>
+
+
+}
+
+

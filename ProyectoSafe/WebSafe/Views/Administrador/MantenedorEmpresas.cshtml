@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DALC.EMPRESA>
+
+@{
+    ViewBag.Title = "MantenedorEmpresas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MantenedorEmpresas</h2>
+
+<p>
+    @Html.ActionLink("Crear Empresa", "AgregarEmpresa")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Razon Social
+        </th>
+        <th>
+            Rut Empresa
+        </th>
+        <th>
+            Representa Legal
+        </th>
+        <th>
+            Dirección
+        </th>
+        <th>
+            Correo Electronico
+        </th>
+        <th>
+            Telefono
+        </th>
+        <th>
+            Sitio Web
+        </th>
+        <th>
+            Rubro
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RAZON_SOCIAL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RUT_EMPRESA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REPRESENTANTE_LEGAL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIRECCION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TELEFONO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PAGINA_WEB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIPO_EMPRESA.RUBRO)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EditarEmpresa", new { id = item.ID_EMPRESA }) |
+                @Html.ActionLink("Detalles", "DetallesEmpresa", new { id = item.ID_EMPRESA }) |
+                @Html.ActionLink("Eliminar", "EliminarEmpresa", new { id = item.ID_EMPRESA }, new { @class = "aEliminar" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        $(".aEliminar").click(function (event) {
+            if (!confirm('Estas seguro de Eliminar ?')) {
+                event.preventDefault();
+                }
+        });
+    </script>
+}
