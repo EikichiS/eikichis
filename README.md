@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Simon Garcia</h1>
-<h3 align="center">FullStack form Chile <3</h3>
+<h3 align="center">FullStack from Chile <3</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=eikichis&label=Profile%20views&color=0e75b6&style=flat" alt="eikichis" /> </p>
 
